@@ -1,0 +1,159 @@
+INSERT INTO test.employee
+(empId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(1,
+ 'Joe',
+ 'Smith',
+ 1,
+ 140000,
+ '2014-05-01');
+
+INSERT INTO test.employee
+(empId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(2,
+ 'Jane',
+ 'Doe',
+ 2,
+ 50000,
+ '2015-01-03');
+
+INSERT INTO test.employee
+(empId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(3,
+ 'Ella',
+ 'Wheeler',
+ 4,
+ 250000,
+ '2012-03-02');
+
+INSERT INTO test.employee
+(empId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(4,
+ 'Annmarie',
+ 'Bray',
+ 5,
+ 25000,
+ '2011-09-30');
+
+INSERT INTO test.employee
+(empId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(5,
+ 'Hollis',
+ 'Elmer',
+ 3,
+ 45000,
+ '2010-10-02');
+
+INSERT INTO test.employee
+(empId,
+ managerId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(6,
+ 1,
+ 'Adria',
+ 'Hameldon',
+ 1,
+ 55000,
+ '2015-06-01');
+
+INSERT INTO test.employee
+(empId,
+ managerId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(7,
+ 3,
+ 'Logan',
+ 'Quincy',
+ 4,
+ 15000,
+ '2014-03-12');
+
+INSERT INTO test.employee
+(empId,
+ managerId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(8,
+ 2,
+ 'Marlene',
+ 'May',
+ 2,
+ 75000,
+ '2010-02-05');
+
+INSERT INTO test.employee
+(empId,
+ managerId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(9,
+ 5,
+ 'Colin',
+ 'Wilkerson',
+ 3,
+ 65000,
+ '2009-01-01');
+
+INSERT INTO test.employee
+(empId,
+ managerId,
+ firstName,
+ lastName,
+ deptId,
+ salary,
+ hireDate)
+VALUES
+(10,
+ 1,
+ 'Bea',
+ 'Waterman',
+ 1,
+ 85000,
+ '2015-11-12');

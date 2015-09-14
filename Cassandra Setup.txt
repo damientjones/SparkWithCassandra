@@ -1,0 +1,18 @@
+CREATE KEYSPACE IF NOT EXISTS test
+WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':'1'}
+AND DURABLE_WRITES = true;
+
+CREATE TABLE IF NOT EXISTS test.department
+(deptId     bigint,
+ department text,
+ PRIMARY KEY (deptId));
+
+CREATE TABLE IF NOT EXISTS test.employee
+(empId      bigint,
+ managerId  bigint,
+ firstName  text,
+ lastName   text,
+ deptId     bigint,
+ salary     bigint,
+ hireDate   timestamp,
+ PRIMARY KEY (empId));
