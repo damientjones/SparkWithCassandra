@@ -30,6 +30,9 @@ object CreateSparkContext {
       csc = new CassandraSQLContext(sc)
     }
   }
+  def getSparkContext : SparkContext = {
+    sc
+  }
   def getCassandraContext : CassandraSQLContext = {
     csc
   }

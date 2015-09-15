@@ -6,8 +6,9 @@ package DAO
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.cassandra.CassandraSQLContext
 
-trait BaseDAO {
+trait BaseDAO[T] {
   protected val tableName : String = ""
+  protected val keySpace : String = ""
   private var sql : String = ""
   private var selectCols : String = ""
   private var whereClause : String = ""
