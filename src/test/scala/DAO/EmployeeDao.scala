@@ -3,6 +3,7 @@
  */
 package DAO
 
+import com.datastax.spark.connector.SomeColumns
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.cassandra.CassandraSQLContext
 
@@ -19,6 +20,7 @@ class EmployeeDao (sc:SparkContext,
   extends BaseDAO[empRec] {
   override protected val tableName = "employee"
   override protected val keySpace : String = "test"
+  private val columns = SomeColumns("empid","managerid","firstname","lastname","deptid","salary","hiredate")
   def createRec(empId:BigInt,
                 managerId:BigInt,
                 firstName:String,

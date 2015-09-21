@@ -5,6 +5,7 @@ package App
 
 import Util.CreateSparkContext
 import DAO.{DepartmentDao,EmployeeDao}
+import com.datastax.spark.connector.cql.CassandraConnector
 
 class SparkCassandraTest {
   //Constructor setting up cassandra connection
@@ -20,19 +21,31 @@ class SparkCassandraTest {
   csc.setKeyspace("test")
   val emp = new EmployeeDao(sc,csc)
   val dept = new DepartmentDao(sc,csc)
+  val empCols = Array("empid","managerid","deptid","firstname","lastname","salary")
+  val deptCols = Array("deptid","department")
+  val deptWhere = Array(Array("AND","department","=","'IT'","1","1"),Array("OR","department","=","'HR'","1","2"))
+  /* Delete extra record */
+  CassandraConnector(CreateSparkContext.getConf).withSessionDo { session =>
+    session.execute("DELETE FROM test.department WHERE deptid = 10;")
+  }
 
   private def createDeptRec = {
     dept.createRec(10,"abc")
   }
 
-    /** Gets data from employee and department joins the data output a summary of salaries
-      * for each department and then returns a json object of the joined data
-       */
   def main = {
-    val empData = emp.select("empid,managerid,deptid,firstname,lastname,salary")
-    val deptData = dept.select("deptid,department")
+    val empData = emp.select(empCols).cache
+    val deptData = dept.select(deptCols)
+    // use where clause
+    val itDeptData = dept.select(deptCols,deptWhere)
+    itDeptData.foreach(println)
+    /* Show count prior to insert */
+    println("Department has " + deptData.count + " records")
     dept.insert(Seq(createDeptRec))
-    val empDeptJoin = empData.join(deptData,"deptid")
+    deptData.cache
+    /* Show count after insert */
+    println("Department now has " + deptData.count + " records")
+    val empDeptJoin = empData.join(deptData,"deptid").cache
     println(empDeptJoin.groupBy("department").sum("salary").show)
     val json = empDeptJoin.toJSON.collect
     CreateSparkContext.closeSparkContext

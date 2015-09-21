@@ -36,6 +36,9 @@ object CreateSparkContext {
   def getCassandraContext : CassandraSQLContext = {
     csc
   }
+  def getConf : SparkConf = {
+    conf
+  }
   def closeSparkContext {
     sc.stop()
   }
